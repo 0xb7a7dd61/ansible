@@ -7,6 +7,13 @@
         state: latest
         path: "{{ homebrew_path }}"
         update_homebrew: true
+    - name: Install make
+      community.general.homebrew:
+        name:
+          - make
+        state: latest
+        path: "{{ homebrew_path }}"
+        update_homebrew: true
     - name: Install tmux
       community.general.homebrew:
         name:
