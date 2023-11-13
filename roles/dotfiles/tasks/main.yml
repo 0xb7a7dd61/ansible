@@ -1,6 +1,6 @@
 - name: Checkout dotfiles
   git:
-    repo: https://github.com/0xb7a7dd61/dotfiles.git
+    repo: git@github.com-t1dev:0xb7a7dd61/dotfiles.git
     dest: "{{ dev_dir }}/{{ dev_personal_subdir }}/dotfiles"
 - name: run init target
   make:
