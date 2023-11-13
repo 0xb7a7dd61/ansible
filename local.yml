@@ -4,10 +4,13 @@
   roles:
     - role: core
       tags:
-        - core
+        - core-role
+        - dotfiles
     - role: git
       tags:
+        - git-role
         - git
     - role: dotfiles
       tags:
+        - dotfiles-role
         - dotfiles
