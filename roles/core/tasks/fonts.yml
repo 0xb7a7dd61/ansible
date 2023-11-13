@@ -1,0 +1,38 @@
+- name: Install fonts
+  block:
+    - name: Install Fira Code - Bold
+      ansible.builtin.shell: >
+        curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Bold/FiraCodeNerdFont-Bold.ttf
+      args:
+        executable: /bin/bash
+        chdir: "{{ lookup('env', 'HOME') }}/Library/Fonts"
+        creates: "{{ lookup('env', 'HOME') }}/Library/Fonts/FiraCodeNerdFont-Bold.ttf"
+    - name: Install Fira Code - Light
+      ansible.builtin.shell: >
+        curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Light/FiraCodeNerdFont-Light.ttf
+      args:
+        executable: /bin/bash
+        chdir: "{{ lookup('env', 'HOME') }}/Library/Fonts"
+        creates: "{{ lookup('env', 'HOME') }}/Library/Fonts/FiraCodeNerdFont-Light.ttf"
+    - name: Install Fira Code - Medium
+      ansible.builtin.shell: >
+        curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Medium/FiraCodeNerdFont-Medium.ttf
+      args:
+        executable: /bin/bash
+        chdir: "{{ lookup('env', 'HOME') }}/Library/Fonts"
+        creates: "{{ lookup('env', 'HOME') }}/Library/Fonts/FiraCodeNerdFont-Medium.ttf"
+    - name: Install Fira Code - Regular
+      ansible.builtin.shell: >
+        curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
+      args:
+        executable: /bin/bash
+        chdir: "{{ lookup('env', 'HOME') }}/Library/Fonts"
+        creates: "{{ lookup('env', 'HOME') }}/Library/Fonts/FiraCodeNerdFont-Regular.ttf"
+    - name: Install Fira Code - Retina
+      ansible.builtin.shell: >
+        curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Retina/FiraCodeNerdFont-Retina.ttf
+      args:
+        executable: /bin/bash
+        chdir: "{{ lookup('env', 'HOME') }}/Library/Fonts"
+        creates: "{{ lookup('env', 'HOME') }}/Library/Fonts/FiraCodeNerdFont-Retina.ttf"
+  when: ansible_distribution == "MacOSX"

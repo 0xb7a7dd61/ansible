@@ -1,0 +1,7 @@
+---
+homebrew_path: /opt/homebrew/bin:/usr/local/bin
+dev_dir: ~/development
+dev_personal_subdir: /personal
+dev_treasure_subdir: /treasure
+dev_hytopia_subdir: /hytopia
+

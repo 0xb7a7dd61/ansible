@@ -1,0 +1,43 @@
+- name: Install neovim dependencies
+  block:
+    - name: Install ripgrep
+      community.general.homebrew:
+        name:
+          - ripgrep
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install fd
+      community.general.homebrew:
+        name:
+          - fd
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install lazygit
+      community.general.homebrew:
+        name:
+          - lazygit
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install fzf
+      community.general.homebrew:
+        name:
+          - fzf
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install trash-cli
+      community.general.homebrew:
+        name:
+          - trash-cli
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install deno
+      community.general.homebrew:
+        name:
+          - deno
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install nomic foundation solidity language server node.js package globally.
+      community.general.npm:
+        name: "@nomicfoundation/solidity-language-server"
+        global: true
+  when: ansible_distribution == "MacOSX"

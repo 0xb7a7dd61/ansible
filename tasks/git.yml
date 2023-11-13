@@ -1,0 +1,28 @@
+- name: Git personal setup email
+  git_config:
+    name: user.email
+    scope: global
+    value: "aabhmmw7@duck.com"
+  tags:
+  - git-personal
+- name: Git personal setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: "0xb7a7dd61"
+  tags:
+  - git-personal
+- name: Git treasure setup email
+  git_config:
+    name: user.email
+    scope: global
+    value: "t1dev@treasure.lol"
+  tags:
+  - git-treasure
+- name: Git treasure setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: "treasure-t1dev"
+  tags:
+  - git-treasure

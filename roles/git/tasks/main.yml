@@ -1,0 +1,72 @@
+- name: Ensure necessary directories exists.
+  block:
+    - name: Ensure personal dev directory exists
+      file:
+        dest: "{{ dev_dir }}/{{ dev_personal_subdir }}"
+        mode: 0700
+        state: directory
+    - name: Ensure treasure dev directory exists
+      file:
+        dest: "{{ dev_dir }}/{{ dev_treasure_subdir }}"
+        mode: 0700
+        state: directory
+    - name: Ensure hytopia dev directory exists
+      file:
+        dest: "{{ dev_dir }}/{{ dev_hytopia_subdir }}"
+        mode: 0700
+        state: directory
+- name: Git personal setup email
+  git_config:
+    name: user.email
+    scope: file
+    value: "aabhmmw7@duck.com"
+    file: "{{ dev_dir }}/{{ dev_personal_subdir }}/.gitconfig"
+  tags:
+  - git-personal
+  - git
+- name: Git personal setup name
+  git_config:
+    name: user.name
+    scope: file
+    value: "0xb7a7dd61"
+    file: "{{ dev_dir }}/{{ dev_personal_subdir }}/.gitconfig"
+  tags:
+  - git-personal
+  - git
+- name: Git treasure setup email
+  git_config:
+    name: user.email
+    scope: file
+    value: "t1dev@treasure.lol"
+    file: "{{ dev_dir }}/{{ dev_treasure_subdir }}/.gitconfig"
+  tags:
+  - git-treasure
+  - git
+- name: Git treasure setup name
+  git_config:
+    name: user.name
+    scope: file
+    value: "treasure-t1dev"
+    file: "{{ dev_dir }}/{{ dev_treasure_subdir }}/.gitconfig"
+  tags:
+  - git-treasure
+  - git
+- name: Git hytopia setup email
+  git_config:
+    name: user.email
+    scope: file
+    value: "aabhmmw7@duck.com"
+    file: "{{ dev_dir }}/{{ dev_hytopia_subdir }}/.gitconfig"
+  tags:
+  - git-hytopia
+  - git
+- name: Git hytopia setup name
+  git_config:
+    name: user.name
+    scope: file
+    value: "0xb7a7dd61"
+    file: "{{ dev_dir }}/{{ dev_hytopia_subdir }}/.gitconfig"
+  tags:
+  - git-hytopia
+  - git
+

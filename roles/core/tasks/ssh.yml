@@ -1,0 +1,33 @@
+- name: Ensure .ssh directory exists.
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.ssh"
+    mode: 0700
+    state: directory
+- name: Install t1dev github ssh key
+  copy:
+    src: "{{ playbook_dir }}/.ssh/id_rsa_0xb7a7dd61"
+    dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_0xb7a7dd61"
+    mode: 0600
+- name: Install treasure github ssh key
+  copy:
+    src: "{{ playbook_dir }}/.ssh/id_rsa_treasure-t1dev"
+    dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_treasure-t1dev"
+    mode: 0600
+- name: Set .ssh/config github entries
+  ansible.builtin.blockinfile:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/config"
+    block: |
+      # Treasure account
+      Host github.com-treasure
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_treasure-t1dev
+        IdentitiesOnly yes
+
+      # 0xb7a7dd61 account
+      Host github.com-t1dev
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_0xb7a7dd61
+        IdentitiesOnly yes
+

@@ -1,0 +1,7 @@
+- name: Bootstrap dev environment
+  hosts: localhost
+  connection: local
+  roles:
+    - core
+    - git
+    - dotfiles

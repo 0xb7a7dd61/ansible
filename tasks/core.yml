@@ -1,0 +1,59 @@
+- name: Install the latest version of system dependencies
+  block:
+    - name: Install git
+      community.general.homebrew:
+        name:
+          - git
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+        update_homebrew: true
+      when: ansible_distribution == "MacOSX"
+    - name: Install tmux
+      community.general.homebrew:
+        name:
+          - tmux
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"
+    - name: Install ripgrep
+      community.general.homebrew:
+        name:
+          - ripgrep
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"
+    - name: Install fd
+      community.general.homebrew:
+        name:
+          - fd
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"
+    - name: Install lazygit
+      community.general.homebrew:
+        name:
+          - lazygit
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"
+    - name: Install fzf
+      community.general.homebrew:
+        name:
+          - fzf
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"
+    - name: Install yabai
+      community.general.homebrew:
+        name:
+          - koekeishiya/formulae/yabai
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"
+    - name: Install skhd
+      community.general.homebrew:
+        name:
+          - koekeishiya/formulae/skhd
+        state: latest
+        path: "/opt/homebrew/bin:/usr/local/bin"
+      when: ansible_distribution == "MacOSX"

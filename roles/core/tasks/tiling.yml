@@ -1,0 +1,19 @@
+- name: Install tiling
+  block:
+    - name: Install yabai
+      community.general.homebrew:
+        name:
+          - koekeishiya/formulae/yabai
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install skhd
+      community.general.homebrew:
+        name:
+          - koekeishiya/formulae/skhd
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Run tiling services
+      ansible.builtin.shell: |
+        yabai --restart-service
+        skhd --restart-service
+  when: ansible_distribution == "MacOSX"

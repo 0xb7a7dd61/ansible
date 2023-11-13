@@ -1,0 +1,76 @@
+- name: Install the latest version of system dependencies
+  block:
+    - name: Install git
+      community.general.homebrew:
+        name:
+          - git
+        state: latest
+        path: "{{ homebrew_path }}"
+        update_homebrew: true
+    - name: Install tmux
+      community.general.homebrew:
+        name:
+          - tmux
+        state: latest
+        path: "{{ homebrew_path }}"
+    - name: Install python deps
+      community.general.homebrew:
+        name:
+          - pipx
+          - virtualenv
+        state: latest
+        path: "{{ homebrew_path }}"
+  when: ansible_distribution == "MacOSX"
+  tags:
+    - install
+
+- name: Neovim tasks
+  block:
+    - name: Run neovim tasks
+      ansible.builtin.include_tasks: neovim.yml
+  tags:
+    - install
+    - dotfiles
+    - neovim
+
+- name: Tiling tasks
+  block:
+    - name: Run tiling tasks
+      ansible.builtin.include_tasks: tiling.yml
+  tags:
+    - install
+    - tiling
+
+- name: SSH tasks
+  block:
+    - name: Run ssh tasks
+      ansible.builtin.include_tasks: ssh.yml
+  tags:
+    - install
+    - ssh
+    - git
+
+- name: Node tasks
+  block:
+    - name: Run node tasks
+      ansible.builtin.include_tasks: node.yml
+  tags:
+    - install
+    - dotfiles
+    - node
+
+- name: Rust tasks
+  block:
+    - name: Run rust tasks
+      ansible.builtin.include_tasks: rust.yml
+  tags:
+    - install
+    - rust
+
+- name: Font tasks
+  block:
+    - name: Run fonts tasks
+      ansible.builtin.include_tasks: fonts.yml
+  tags:
+    - install
+    - fonts

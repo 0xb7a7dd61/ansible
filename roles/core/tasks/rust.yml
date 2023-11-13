@@ -1,0 +1,10 @@
+- name: Install rustup
+  community.general.homebrew:
+    name:
+      - rustup
+    state: latest
+    path: "{{ homebrew_path }}"
+  when: ansible_distribution == "MacOSX"
+
+- name: rustup
+  command: rustup toolchain install nightly
