@@ -2,6 +2,12 @@
   hosts: localhost
   connection: local
   roles:
-    - core
-    - git
-    - dotfiles
+    - role: core
+      tags:
+        - core
+    - role: git
+      tags:
+        - git
+    - role: dotfiles
+      tags:
+        - dotfiles
