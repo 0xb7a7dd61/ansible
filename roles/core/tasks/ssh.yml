@@ -13,6 +13,11 @@
     src: "{{ playbook_dir }}/.ssh/id_rsa_treasure-t1dev"
     dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_treasure-t1dev"
     mode: 0600
+- name: Install [[redacted1]] github ssh key
+  copy:
+    src: "{{ playbook_dir }}/.ssh/id_rsa_redacted1"
+    dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa_redacted1"
+    mode: 0600
 - name: Set .ssh/config github entries
   ansible.builtin.blockinfile:
     path: "{{ lookup('env', 'HOME') }}/.ssh/config"
@@ -29,5 +34,12 @@
         HostName github.com
         User git
         IdentityFile ~/.ssh/id_rsa_0xb7a7dd61
+        IdentitiesOnly yes
+
+      # redacted1 account
+      Host github.com-r1
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_redacted1
         IdentitiesOnly yes
 
