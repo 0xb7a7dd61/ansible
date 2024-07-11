@@ -1,0 +1,28 @@
+- name: Ensure .teslamate directory exists.
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.teslamate"
+    mode: 0700
+    state: directory
+- name: Install teslamate docker-compose.yml file
+  copy:
+    src: "{{ playbook_dir }}/teslamate/docker-compose"
+    dest: "{{ lookup('env', 'HOME') }}/.teslamate/docker-compose.yml"
+    mode: 0600
+- name: Copy teslamate tokens file
+  copy:
+    src: "{{ playbook_dir }}/teslamate/tokens"
+    dest: "{{ lookup('env', 'HOME') }}/.teslamate/tokens"
+    mode: 0600
+- name: Run teslamate docker-compose
+  community.docker.docker_compose_v2:
+    project_src: "{{ lookup('env', 'HOME') }}/.teslamate" 
+  register: output
+- name: Show results
+  ansible.builtin.debug:
+    var: output
+- name: Teslamate instructions
+  ansible.builtin.debug:
+    msg:
+      - "Go to http://localhost:4000 to sign in and use Teslamate."
+      - "Token values are as follows (copy from ~/.teslamate/tokens):"
+      - "{{ lookup('ansible.builtin.file', '{{ playbook_dir }}/teslamate/tokens') }}"

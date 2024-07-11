@@ -81,3 +81,12 @@
   tags:
     - install
     - fonts
+    
+- name: Teslamate tasks
+  block:
+    - name: Run Teslamate tasks
+      ansible.builtin.include_tasks: teslamate.yml
+  tags:
+    - install
+    - teslamate
+    - dockercompose
